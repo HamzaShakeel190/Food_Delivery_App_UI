@@ -2,18 +2,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:free_food_delivery_app/signup_screen/singup_screen.dart';
 
-import '../payment_screen/payment_screen.dart';
+class UpdateProfileImageScreen extends StatefulWidget {
+  static const String id = "UpdateProfileImageScreen";
 
-class SignUpProcessScreen extends StatefulWidget {
-  static const String id = "SignUpProcessScreen";
-
-  const SignUpProcessScreen({super.key});
+  const UpdateProfileImageScreen({super.key});
 
   @override
-  State<SignUpProcessScreen> createState() => _SignUpProcessScreenState();
+  State<UpdateProfileImageScreen> createState() =>
+      _UpdateProfileImageScreenState();
 }
 
-class _SignUpProcessScreenState extends State<SignUpProcessScreen> {
+class _UpdateProfileImageScreenState extends State<UpdateProfileImageScreen> {
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
@@ -34,10 +33,8 @@ class _SignUpProcessScreenState extends State<SignUpProcessScreen> {
       home: Scaffold(
         body: SafeArea(
           child: SingleChildScrollView(
-
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-
               children: [
                 // Back Button
                 Padding(
@@ -69,7 +66,7 @@ class _SignUpProcessScreenState extends State<SignUpProcessScreen> {
                 const Padding(
                   padding: EdgeInsets.only(left: 20, bottom: 20, top: 0),
                   child: Text(
-                    "Fill in your bio to get \nstarted",
+                    "Upload Your Photo\nProfile",
                     style: TextStyle(
                       fontSize: 25,
                       fontWeight: FontWeight.bold,
@@ -88,97 +85,83 @@ class _SignUpProcessScreenState extends State<SignUpProcessScreen> {
                 ),
 
                 Padding(
-                  padding: const EdgeInsets.only(left: 25, right: 25, bottom: 20, top: 15),
-                  child: Material(
-                    borderRadius: BorderRadius.circular(15),
-                    elevation: 10,
-                    shadowColor: const Color(0xFFFDF5ED),
-                    child: TextField(
-                      autocorrect: true,
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white,
-                        hintText: "First Name",
-                        hintStyle: const TextStyle(
-                          // color: Color(0xfff4f4f4),
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15),
-                          borderSide: BorderSide.none, // Remove the default border
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 25, right: 25, bottom: 20),
-                  child: Material(
-                    borderRadius: BorderRadius.circular(15),
-                    elevation: 10,
-                    shadowColor: const Color(0xFFFDF5ED),
-                    child: TextField(
-                      autocorrect: true,
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white,
-                        hintText: "Last Name",
-                        hintStyle: const TextStyle(
-                          // color: Color(0xfff4f4f4),
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15),
-                          borderSide: BorderSide.none, // Remove the default border
+                  padding: const EdgeInsets.all(20),
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: SizedBox(
+                      width: 325, // Set the desired width
+                      height: 129,
+                      child: Material(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(15),
+                        elevation: 5,
+                        shadowColor: const Color(0xFFFDF5ED),
+                        child: Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Image.asset("assets/images/FromGallery.png", width: 50, height: 50  ,),
+                              const Padding(
+                                padding: EdgeInsets.all(5),
+                                child: Text(
+                                  "From Gallery",
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
                   ),
                 ),
-
-                Padding(
-                  padding: const EdgeInsets.only(left: 25, right: 25, bottom: 20),
-                  child: Material(
-                    borderRadius: BorderRadius.circular(15),
-                    elevation: 10,
-                    shadowColor: const Color(0xFFFDF5ED),
-                    child: TextField(
-                      autocorrect: true,
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white,
-                        hintText: "Mobile Number",
-                        hintStyle: const TextStyle(
-                          // color: Color(0xfff4f4f4),
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15),
-                          borderSide: BorderSide.none, // Remove the default border
+                Align(
+                  alignment: Alignment.center,
+                  child: SizedBox(
+                    width: 325, // Set the desired width
+                    height: 129,
+                    child: Material(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(15),
+                      elevation: 5,
+                      shadowColor: const Color(0xFFFDF5ED),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Image.asset("assets/images/cameraLogo.png", width: 50, height: 50  ,),
+                            const Padding(
+                              padding: EdgeInsets.all(5),
+                              child: Text(
+                                "Take Photo",
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
                   ),
                 ),
-
-
-
-
-
 
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: Container(
-                    margin: const EdgeInsets.only(top: 130),
+                    margin: const EdgeInsets.only(top: 110),
                     width: 157, // Set the desired width
                     height: 57, // Set the desired height
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, PaymentScreen.id);
+                        Navigator.pushNamed(
+                            context, UpdateProfileImageScreen.id);
                       },
                       style: ButtonStyle(
                         shape:
-                        MaterialStateProperty.all<RoundedRectangleBorder>(
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(
                                 15), // Adjust the radius as needed
@@ -192,8 +175,6 @@ class _SignUpProcessScreenState extends State<SignUpProcessScreen> {
                     ),
                   ),
                 ),
-
-
               ],
             ),
           ),
