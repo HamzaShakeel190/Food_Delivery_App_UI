@@ -4,7 +4,7 @@ In this repository I'm creating a beautiful Food Delivery App UI.
 
 This app have these features:
 
-Splash Screen / Loading Screen
+Splash Screen / Loading Screen,
 
 Login Page and Signup Page
 
