@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:free_food_delivery_app/signup_screen/signup_process_screen.dart';
 import 'package:free_food_delivery_app/signup_screen/singup_screen.dart';
 import 'login_screen/login_screen.dart';
 import 'on_boarding_screen1.dart';
@@ -27,6 +28,7 @@ class Home extends StatelessWidget {
         OnBoardingScreen2.id: (context) => const OnBoardingScreen2(),
         LoginScreen.id: (context) => const LoginScreen(),
         SignUpScreen.id: (context) => const SignUpScreen(),
+        SignUpProcessScreen.id: (context) => const SignUpProcessScreen(),
       },
     );
   }

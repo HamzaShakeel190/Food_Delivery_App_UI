@@ -14,9 +14,15 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  bool showPassword = true; // Moved it here to preserve state
+  void togglePasswordView() {
+    setState(() {
+      showPassword = !showPassword;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
       theme: ThemeData(
         elevatedButtonTheme: ElevatedButtonThemeData(
@@ -78,30 +84,39 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.only(
+                  Padding(
+                    padding: const EdgeInsets.only(
                       left: 25,
                       right: 25,
                       bottom: 12,
                     ),
                     child: TextField(
                       autocorrect: true,
-                      obscureText: true,
+                      obscureText: showPassword,
                       obscuringCharacter: "*",
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
                         hintText: "Password",
-                        hintStyle: TextStyle(
+                        hintStyle: const TextStyle(
                             // color: Color(0xfff4f4f4),
                             ),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(15),
-                            ),
-                            borderSide: BorderSide(
-                              color: Color(0xfff4f4f4),
-                              width: 1.0,
-                            )),
+                        suffixIcon: IconButton(
+                          onPressed: togglePasswordView,
+                          icon: Icon(
+                            showPassword
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                          ),
+                        ),
+                        border: const OutlineInputBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(15),
+                          ),
+                          borderSide: BorderSide(
+                            color: Color(0xfff4f4f4),
+                            width: 1.0,
+                          ),
+                        ),
                       ),
                     ),
                   ),
@@ -190,8 +205,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             // Navigator.pushNamed(context, SignUpScreen.id);
                           },
                           style: ButtonStyle(
-                            shape:
-                                MaterialStateProperty.all<RoundedRectangleBorder>(
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
                               RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(
                                     15), // Adjust the radius as needed
@@ -212,8 +227,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             Navigator.pushNamed(context, SignUpScreen.id);
                           },
                           style: ButtonStyle(
-                            shape:
-                                MaterialStateProperty.all<RoundedRectangleBorder>(
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
                               RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(
                                     15), // Adjust the radius as needed
@@ -226,10 +241,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                       ),
-
                     ],
                   ),
-
                 ],
               ),
             ],

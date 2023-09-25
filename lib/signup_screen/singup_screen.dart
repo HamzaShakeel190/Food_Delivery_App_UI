@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:free_food_delivery_app/signup_screen/signup_process_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
   static const String id = "SignUpScreen";
@@ -14,7 +16,6 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
       theme: ThemeData(
         elevatedButtonTheme: ElevatedButtonThemeData(
@@ -47,7 +48,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   const Padding(
                     padding: EdgeInsets.only(top: 290),
                     child: Text(
-                      "Login To Your Account",
+                      "Sign Up For Free",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
@@ -55,24 +56,50 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ),
                   const Padding(
+                    padding: EdgeInsets.only(left: 25, right: 25, bottom: 15, top: 40),
+                    child: TextField(
+                      autocorrect: true,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        hintText: "User Name",
+                        hintStyle: TextStyle(
+                            // color: Color(0xfff4f4f4),
+                            ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(15),
+                          ),
+                          borderSide: BorderSide(
+                            color: Color(0xfff4f4f4),
+                            width: 1.0,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const Padding(
                     padding: EdgeInsets.only(
-                        left: 25, right: 25, bottom: 15, top: 40),
+                      left: 25,
+                      right: 25,
+                      bottom: 15,
+                    ),
                     child: TextField(
                       autocorrect: true,
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
                         hintText: "Email",
                         hintStyle: TextStyle(
-                          // color: Color(0xfff4f4f4),
-                        ),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(15),
+                            // color: Color(0xfff4f4f4),
                             ),
-                            borderSide: BorderSide(
-                              color: Color(0xfff4f4f4),
-                              width: 1.0,
-                            )),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(15),
+                          ),
+                          borderSide: BorderSide(
+                            color: Color(0xfff4f4f4),
+                            width: 1.0,
+                          ),
+                        ),
                       ),
                     ),
                   ),
@@ -84,37 +111,36 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     child: TextField(
                       autocorrect: true,
-                      obscureText: true,
-                      obscuringCharacter: "*",
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
                         hintText: "Password",
                         hintStyle: TextStyle(
-                          // color: Color(0xfff4f4f4),
-                        ),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(15),
+                            // color: Color(0xfff4f4f4),
                             ),
-                            borderSide: BorderSide(
-                              color: Color(0xfff4f4f4),
-                              width: 1.0,
-                            )),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(15),
+                          ),
+                          borderSide: BorderSide(
+                            color: Color(0xfff4f4f4),
+                            width: 1.0,
+                          ),
+                        ),
                       ),
                     ),
                   ),
-
-
-
                   Padding(
                     padding: const EdgeInsets.only(left: 30, bottom: 10),
                     child: Row(
                       children: [
                         MyWidget(),
-                        const Text("Keep Me Signed In", style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w400,
-                        ),),
+                        const Text(
+                          "Keep Me Signed In",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -123,26 +149,27 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     child: Row(
                       children: [
                         MyWidget(),
-                        const Text("Email Me About Special Pricing", style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w400,
-                        ),),
+                        const Text(
+                          "Email Me About Special Pricing",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
                       ],
                     ),
                   ),
-
-
                   Container(
                     margin: const EdgeInsets.only(top: 20),
                     width: 175, // Set the desired width
                     height: 57, // Set the desired height
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, SignUpScreen.id);
+                        Navigator.pushNamed(context, SignUpProcessScreen.id);
                       },
                       style: ButtonStyle(
                         shape:
-                        MaterialStateProperty.all<RoundedRectangleBorder>(
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(
                                 15), // Adjust the radius as needed
@@ -175,8 +202,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 }
 
-
-
 class MyWidget extends StatefulWidget {
   @override
   _MyWidgetState createState() => _MyWidgetState();
@@ -189,7 +214,6 @@ class _MyWidgetState extends State<MyWidget> {
   Widget build(BuildContext context) {
     return Checkbox(
       value: _isChecked,
-
       onChanged: (bool? value) {
         setState(() {
           _isChecked = value!;
