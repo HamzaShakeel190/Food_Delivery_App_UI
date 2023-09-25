@@ -179,28 +179,57 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(
-                    width: 141, // Set the desired width
-                    height: 57, // Set the desired height
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, SignUpScreen.id);
-                      },
-                      style: ButtonStyle(
-                        shape:
-                            MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(
-                                15), // Adjust the radius as needed
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      SizedBox(
+                        width: 141, // Set the desired width
+                        height: 57, // Set the desired height
+                        child: ElevatedButton(
+                          onPressed: () {
+                            // Navigator.pushNamed(context, SignUpScreen.id);
+                          },
+                          style: ButtonStyle(
+                            shape:
+                                MaterialStateProperty.all<RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(
+                                    15), // Adjust the radius as needed
+                              ),
+                            ),
+                          ),
+                          child: const Text(
+                            "Login",
+                            style: TextStyle(fontSize: 16, color: Colors.white),
                           ),
                         ),
                       ),
-                      child: const Text(
-                        "Login",
-                        style: TextStyle(fontSize: 16, color: Colors.white),
+                      SizedBox(
+                        width: 141, // Set the desired width
+                        height: 57, // Set the desired height
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, SignUpScreen.id);
+                          },
+                          style: ButtonStyle(
+                            shape:
+                                MaterialStateProperty.all<RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(
+                                    15), // Adjust the radius as needed
+                              ),
+                            ),
+                          ),
+                          child: const Text(
+                            "Signup",
+                            style: TextStyle(fontSize: 16, color: Colors.white),
+                          ),
+                        ),
                       ),
-                    ),
-                  )
+
+                    ],
+                  ),
+
                 ],
               ),
             ],

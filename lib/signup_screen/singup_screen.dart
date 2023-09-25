@@ -105,25 +105,35 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
 
 
-                  CheckboxListTile(
 
-                    title: Text("Keep Me Signed In"),
-                    value: false,
-                    onChanged: (value) {
-                      // Handle the checkbox value change.
-                    },
+                  Padding(
+                    padding: const EdgeInsets.only(left: 30, bottom: 10),
+                    child: Row(
+                      children: [
+                        MyWidget(),
+                        const Text("Keep Me Signed In", style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w400,
+                        ),),
+                      ],
+                    ),
                   ),
-                  CheckboxListTile(
-                    title: Text("Email Me About Special Pricing"),
-                    value: false,
-                    onChanged: (value) {
-                      // Handle the checkbox value change.
-                    },
+                  Padding(
+                    padding: const EdgeInsets.only(left: 30, bottom: 10),
+                    child: Row(
+                      children: [
+                        MyWidget(),
+                        const Text("Email Me About Special Pricing", style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w400,
+                        ),),
+                      ],
+                    ),
                   ),
 
 
                   Container(
-                    margin: EdgeInsets.only(top: 20),
+                    margin: const EdgeInsets.only(top: 20),
                     width: 175, // Set the desired width
                     height: 57, // Set the desired height
                     child: ElevatedButton(
@@ -165,3 +175,28 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 }
 
+
+
+class MyWidget extends StatefulWidget {
+  @override
+  _MyWidgetState createState() => _MyWidgetState();
+}
+
+class _MyWidgetState extends State<MyWidget> {
+  bool _isChecked = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Checkbox(
+      value: _isChecked,
+
+      onChanged: (bool? value) {
+        setState(() {
+          _isChecked = value!;
+        });
+      },
+      activeColor: Colors.white,
+      checkColor: const Color(0xFF27CA7D),
+    );
+  }
+}
