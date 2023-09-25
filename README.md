@@ -1,6 +1,10 @@
 # free_food_delivery_app
 
-A new Flutter project.
+In this repository I'm creating a beautiful Food Delivery App UI. 
+
+This app have these features:
+Splash Screen / Loading Screen
+Login Page and Signup Page
 
 ## Getting Started
 
