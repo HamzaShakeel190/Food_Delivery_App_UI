@@ -34,12 +34,12 @@ class _SignUpProcessScreenState extends State<SignUpProcessScreen> {
                 Align(
                   alignment: Alignment.topLeft,
                   child: Container(
-                    margin: EdgeInsets.fromLTRB(20, 20, 0, 0),
+                    margin: const EdgeInsets.fromLTRB(20, 20, 0, 0),
                     width: width*0.1,
                     height: height*0.05,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
-                      color: Color(0xFFFDF5ED),
+                      color: const Color(0xFFFDF5ED),
                     ),
                   ),
                 )
