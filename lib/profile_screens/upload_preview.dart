@@ -1,13 +1,11 @@
-import 'package:flutter/cupertino.dart';
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
-import 'package:image_picker/image_picker.dart';
-
 
 class UploadedImagePreview extends StatelessWidget {
-  final XFile imageFile;
+  final XFile? imageFile;
 
-  UploadedImagePreview({super.key, required this.imageFile});
+  const UploadedImagePreview({Key? key, required this.imageFile}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +35,7 @@ class UploadedImagePreview extends StatelessWidget {
                     child: InkWell(
                       borderRadius: BorderRadius.circular(15),
                       onTap: () {
-                        Navigator.pop(context);
+                        // Navigator.pushNamed(context, routeName);
                       },
                       splashColor: const Color(0xE5D77B42),
                       child: Ink(
@@ -48,7 +46,7 @@ class UploadedImagePreview extends StatelessWidget {
                         width: 45,
                         height: 45,
                         child: const Icon(
-                          CupertinoIcons.back,
+                          Icons.arrow_back,
                           color: Color(0xFFDA6317),
                         ),
                       ),
@@ -71,32 +69,27 @@ class UploadedImagePreview extends StatelessWidget {
                     "This data will be displayed in your account \nprofile for security",
                     style: TextStyle(
                       fontSize: 12,
-                      // fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
 
-                Stack(
-                  children: [
-                    Center(
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(0,50,0,20),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
-                          child: Image.file(
-                            File(imageFile.path),
-                            width: 240,
-                            height: 240,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
+                // Display the selected image
+                Center(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 50, 0, 20),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: Image.file(
+                        File(imageFile!.path),
+                        width: 240,
+                        height: 240,
+                        fit: BoxFit.cover,
                       ),
                     ),
-                  ],
+                  ),
                 ),
 
-
-
+                // Next Button
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: Container(
