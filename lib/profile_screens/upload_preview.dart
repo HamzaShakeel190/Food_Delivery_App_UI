@@ -1,24 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:free_food_delivery_app/signup_screen/signup_screen.dart';
+import 'dart:io';
+import 'package:image_picker/image_picker.dart';
 
-import '../profile_screens/update_profile_screen.dart';
 
-class PaymentScreen extends StatefulWidget {
-  static const String id = "PaymentScreen";
+class UploadedImagePreview extends StatelessWidget {
+  final XFile imageFile;
 
-  const PaymentScreen({super.key});
+  UploadedImagePreview({super.key, required this.imageFile});
 
-  @override
-  State<PaymentScreen> createState() => _PaymentScreenState();
-}
-
-class _PaymentScreenState extends State<PaymentScreen> {
   @override
   Widget build(BuildContext context) {
-    var width = MediaQuery.of(context).size.width;
-    var height = MediaQuery.of(context).size.height;
-
     return MaterialApp(
       theme: ThemeData(
         scaffoldBackgroundColor: const Color(0xffFEFEFF),
@@ -45,7 +37,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                     child: InkWell(
                       borderRadius: BorderRadius.circular(15),
                       onTap: () {
-                        Navigator.pushNamed(context, SignUpScreen.id);
+                        Navigator.pop(context);
                       },
                       splashColor: const Color(0xE5D77B42),
                       child: Ink(
@@ -63,11 +55,10 @@ class _PaymentScreenState extends State<PaymentScreen> {
                     ),
                   ),
                 ),
-
                 const Padding(
                   padding: EdgeInsets.only(left: 20, bottom: 20, top: 0),
                   child: Text(
-                    "Payment Method",
+                    "Upload Your Photo\nProfile",
                     style: TextStyle(
                       fontSize: 25,
                       fontWeight: FontWeight.bold,
@@ -85,84 +76,44 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   ),
                 ),
 
-                Align(
-                  alignment: Alignment.center,
-                  child: SizedBox(
-                    width: 330,
-                    height: 73,
-                    child: Material(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(15),
-                        elevation: 10,
-                        shadowColor: const Color(0xFFFDF5ED),
-                        child: Image.asset(
-                          "assets/images/paypalLogo.png",
-                          fit: BoxFit.contain,
-                        )),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: SizedBox(
-                      width: 330,
-                      height: 73,
-                      child: Material(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(15),
-                        elevation: 10,
-                        shadowColor: const Color(0xFFFDF5ED),
-                        child: Center(
-                          child: SizedBox(
-                            width: 110,
-                            child: Image.asset(
-                              "assets/images/Visa_Card_Logo.png",
-                            ),
+                Stack(
+                  children: [
+                    Center(
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(0,50,0,20),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: Image.file(
+                            File(imageFile.path),
+                            width: 240,
+                            height: 240,
+                            fit: BoxFit.cover,
                           ),
                         ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
-                Align(
-                  alignment: Alignment.center,
-                  child: SizedBox(
-                    width: 330,
-                    height: 73,
-                    child: Material(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(15),
-                      elevation: 10,
-                      shadowColor: const Color(0xFFFDF5ED),
-                      child: Center(
-                        child: SizedBox(
-                          width: 120,
-                          child: Image.asset(
-                            "assets/images/Payoneer_Logo.png",
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+
 
 
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: Container(
-                    margin: const EdgeInsets.only(top: 130),
-                    width: width*0.45,
-                    height: height*0.08,
+                    margin: const EdgeInsets.only(top: 100),
+                    width: 157, // Set the desired width
+                    height: 57, // Set the desired height
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, UpdateProfileImageScreen.id);
+                        // Navigator.pushNamed(
+                        //     context, UpdateProfileImageScreen.id);
                       },
                       style: ButtonStyle(
                         shape:
-                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                        MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15), // Adjust the radius as needed
+                            borderRadius: BorderRadius.circular(
+                                15), // Adjust the radius as needed
                           ),
                         ),
                       ),

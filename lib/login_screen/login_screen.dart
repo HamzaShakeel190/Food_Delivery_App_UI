@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../signup_screen/singup_screen.dart';
+import '../signup_screen/signup_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   static const String id = "LoginScreen";
@@ -23,6 +23,9 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var width = MediaQuery.of(context).size.width;
+    var height = MediaQuery.of(context).size.height;
+
     return MaterialApp(
       theme: ThemeData(
         elevatedButtonTheme: ElevatedButtonThemeData(
@@ -62,25 +65,42 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.only(
-                        left: 25, right: 25, bottom: 15, top: 40),
-                    child: TextField(
-                      autocorrect: true,
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
-                        hintText: "Email",
-                        hintStyle: TextStyle(
-                            // color: Color(0xfff4f4f4),
-                            ),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(15),
-                            ),
-                            borderSide: BorderSide(
-                              color: Color(0xfff4f4f4),
-                              width: 1.0,
-                            )),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        left: 25,
+                        right: 25,
+                        bottom: 15,
+                        top: 40
+                    ),
+                    child: Material(
+                      borderRadius: BorderRadius.circular(15),
+                      elevation: 10,
+                      shadowColor: const Color(0xFFFDF5ED),
+                      child: TextField(
+                        // obscureText: showPassword,
+                        autocorrect: true,
+                        keyboardType: TextInputType.emailAddress,
+                        decoration: InputDecoration(
+                          filled: true,
+                          fillColor: Colors.white,
+                          hintText: "Email",
+                          hintStyle: const TextStyle(
+                              // color: Color(0xfff4f4f4),
+                              ),
+                          // suffixIcon: IconButton(
+                          //   onPressed: togglePasswordView,
+                          //   icon: Icon(
+                          //     showPassword
+                          //         ? Icons.visibility
+                          //         : Icons.visibility_off,
+                          //   ),
+                          // ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15),
+                            borderSide:
+                                BorderSide.none, // Remove the default border
+                          ),
+                        ),
                       ),
                     ),
                   ),
@@ -90,36 +110,38 @@ class _LoginScreenState extends State<LoginScreen> {
                       right: 25,
                       bottom: 12,
                     ),
-                    child: TextField(
-                      autocorrect: true,
-                      obscureText: showPassword,
-                      obscuringCharacter: "*",
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
-                        hintText: "Password",
-                        hintStyle: const TextStyle(
-                            // color: Color(0xfff4f4f4),
+                    child: Material(
+                      borderRadius: BorderRadius.circular(15),
+                      elevation: 10,
+                      shadowColor: const Color(0xFFFDF5ED),
+                      child: TextField(
+                        obscureText: showPassword,
+                        autocorrect: true,
+                        decoration: InputDecoration(
+                          filled: true,
+                          fillColor: Colors.white,
+                          hintText: "Password",
+                          hintStyle: const TextStyle(
+                              // color: Color(0xfff4f4f4),
+                              ),
+                          suffixIcon: IconButton(
+                            onPressed: togglePasswordView,
+                            icon: Icon(
+                              showPassword
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
                             ),
-                        suffixIcon: IconButton(
-                          onPressed: togglePasswordView,
-                          icon: Icon(
-                            showPassword
-                                ? Icons.visibility
-                                : Icons.visibility_off,
                           ),
-                        ),
-                        border: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(15),
-                          ),
-                          borderSide: BorderSide(
-                            color: Color(0xfff4f4f4),
-                            width: 1.0,
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15),
+                            borderSide:
+                                BorderSide.none, // Remove the default border
                           ),
                         ),
                       ),
                     ),
                   ),
+
                   const Padding(
                     padding: EdgeInsets.all(10),
                     child: Text(
@@ -198,8 +220,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       SizedBox(
-                        width: 141, // Set the desired width
-                        height: 57, // Set the desired height
+                        width: 170,
+                        height: 57,
                         child: ElevatedButton(
                           onPressed: () {
                             // Navigator.pushNamed(context, SignUpScreen.id);
@@ -220,8 +242,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       SizedBox(
-                        width: 141, // Set the desired width
-                        height: 57, // Set the desired height
+                        width: 170,
+                        height: 57,
                         child: ElevatedButton(
                           onPressed: () {
                             Navigator.pushNamed(context, SignUpScreen.id);

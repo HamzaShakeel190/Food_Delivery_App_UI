@@ -18,6 +18,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
+        scaffoldBackgroundColor: Colors.white,
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             backgroundColor: const Color(0xff53E88B),
@@ -28,7 +29,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
       ),
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Colors.white,
         body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Stack(
@@ -55,82 +55,125 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.only(left: 25, right: 25, bottom: 15, top: 40),
-                    child: TextField(
-                      autocorrect: true,
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
-                        hintText: "User Name",
-                        hintStyle: TextStyle(
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        left: 25,
+                        right: 25,
+                        bottom: 5,
+                        top: 40
+                    ),
+                    child: Material(
+                      borderRadius: BorderRadius.circular(15),
+                      elevation: 10,
+                      shadowColor: const Color(0xFFFDF5ED),
+                      child: TextField(
+                        // obscureText: showPassword,
+                        autocorrect: true,
+                        keyboardType: TextInputType.text,
+                        decoration: InputDecoration(
+                          filled: true,
+                          fillColor: Colors.white,
+                          hintText: "User Name",
+                          hintStyle: const TextStyle(
                             // color: Color(0xfff4f4f4),
-                            ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(15),
                           ),
-                          borderSide: BorderSide(
-                            color: Color(0xfff4f4f4),
-                            width: 1.0,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.only(
-                      left: 25,
-                      right: 25,
-                      bottom: 15,
-                    ),
-                    child: TextField(
-                      autocorrect: true,
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
-                        hintText: "Email",
-                        hintStyle: TextStyle(
-                            // color: Color(0xfff4f4f4),
-                            ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(15),
-                          ),
-                          borderSide: BorderSide(
-                            color: Color(0xfff4f4f4),
-                            width: 1.0,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.only(
-                      left: 25,
-                      right: 25,
-                      bottom: 12,
-                    ),
-                    child: TextField(
-                      autocorrect: true,
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
-                        hintText: "Password",
-                        hintStyle: TextStyle(
-                            // color: Color(0xfff4f4f4),
-                            ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(15),
-                          ),
-                          borderSide: BorderSide(
-                            color: Color(0xfff4f4f4),
-                            width: 1.0,
+                          // suffixIcon: IconButton(
+                          //   onPressed: togglePasswordView,
+                          //   icon: Icon(
+                          //     showPassword
+                          //         ? Icons.visibility
+                          //         : Icons.visibility_off,
+                          //   ),
+                          // ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15),
+                            borderSide:
+                            BorderSide.none, // Remove the default border
                           ),
                         ),
                       ),
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 30, bottom: 10),
+                    padding: const EdgeInsets.only(
+                        left: 25,
+                        right: 25,
+                        bottom: 5,
+                        top: 10
+                    ),
+                    child: Material(
+                      borderRadius: BorderRadius.circular(15),
+                      elevation: 10,
+                      shadowColor: const Color(0xFFFDF5ED),
+                      child: TextField(
+                        // obscureText: showPassword,
+                        autocorrect: true,
+                        keyboardType: TextInputType.emailAddress,
+                        decoration: InputDecoration(
+                          filled: true,
+                          fillColor: Colors.white,
+                          hintText: "Email",
+                          hintStyle: const TextStyle(
+                            // color: Color(0xfff4f4f4),
+                          ),
+                          // suffixIcon: IconButton(
+                          //   onPressed: togglePasswordView,
+                          //   icon: Icon(
+                          //     showPassword
+                          //         ? Icons.visibility
+                          //         : Icons.visibility_off,
+                          //   ),
+                          // ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15),
+                            borderSide:
+                            BorderSide.none, // Remove the default border
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        left: 25,
+                        right: 25,
+                        bottom: 5,
+                        top: 10
+                    ),
+                    child: Material(
+                      borderRadius: BorderRadius.circular(15),
+                      elevation: 10,
+                      shadowColor: const Color(0xFFFDF5ED),
+                      child: TextField(
+                        obscureText: true,
+                        autocorrect: true,
+                        keyboardType: TextInputType.visiblePassword,
+                        decoration: InputDecoration(
+                          filled: true,
+                          fillColor: Colors.white,
+                          hintText: "Password",
+                          hintStyle: const TextStyle(
+                            // color: Color(0xfff4f4f4),
+                          ),
+                          // suffixIcon: IconButton(
+                          //   onPressed: togglePasswordView,
+                          //   icon: Icon(
+                          //     showPassword
+                          //         ? Icons.visibility
+                          //         : Icons.visibility_off,
+                          //   ),
+                          // ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15),
+                            borderSide:
+                            BorderSide.none, // Remove the default border
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 30,),
                     child: Row(
                       children: [
                         MyWidget(),
@@ -145,7 +188,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 30, bottom: 10),
+                    padding: const EdgeInsets.only(left: 30,),
                     child: Row(
                       children: [
                         MyWidget(),
@@ -159,10 +202,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ],
                     ),
                   ),
-                  Container(
-                    margin: const EdgeInsets.only(top: 20),
-                    width: 175, // Set the desired width
-                    height: 57, // Set the desired height
+                  SizedBox(
+                    width: 175,
+                    height: 57,
                     child: ElevatedButton(
                       onPressed: () {
                         Navigator.pushNamed(context, SignUpProcessScreen.id);

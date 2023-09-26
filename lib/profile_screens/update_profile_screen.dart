@@ -1,6 +1,9 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:free_food_delivery_app/signup_screen/singup_screen.dart';
+import 'package:free_food_delivery_app/profile_screens/upload_preview.dart';
+import 'package:free_food_delivery_app/signup_screen/signup_screen.dart';
+import 'package:image_picker/image_picker.dart';
 
 class UpdateProfileImageScreen extends StatefulWidget {
   static const String id = "UpdateProfileImageScreen";
@@ -13,6 +16,19 @@ class UpdateProfileImageScreen extends StatefulWidget {
 }
 
 class _UpdateProfileImageScreenState extends State<UpdateProfileImageScreen> {
+  final ImagePicker _picker = ImagePicker();
+
+  Future<void> _pickImage(ImageSource source) async {
+    final pickedImage = await _picker.pickImage(source: source);
+    if (pickedImage != null) {
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => UploadedImagePreview(imageFile: pickedImage),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
@@ -44,7 +60,7 @@ class _UpdateProfileImageScreenState extends State<UpdateProfileImageScreen> {
                     child: InkWell(
                       borderRadius: BorderRadius.circular(15),
                       onTap: () {
-                        Navigator.pushNamed(context, SignUpScreen.id);
+                        Navigator.pop(context);
                       },
                       splashColor: const Color(0xE5D77B42),
                       child: Ink(
@@ -88,9 +104,63 @@ class _UpdateProfileImageScreenState extends State<UpdateProfileImageScreen> {
                   padding: const EdgeInsets.all(20),
                   child: Align(
                     alignment: Alignment.center,
-                    child: SizedBox(
-                      width: 325, // Set the desired width
-                      height: 129,
+                    child: InkWell(
+                      onTap: () {
+                        _pickImage(ImageSource.gallery);
+                      },
+                      customBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15)),
+                      child: Ink(
+                        width: width * 0.9,
+                        height: height * 0.18,
+                        child: Material(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(15),
+                          elevation: 5,
+                          shadowColor: const Color(0xFFFDF5ED),
+                          child: Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Image.asset(
+                                  "assets/images/FromGallery.png",
+                                  width: 50,
+                                  height: 50,
+                                ),
+                                const Padding(
+                                  padding: EdgeInsets.all(5),
+                                  child: Text(
+                                    "From Gallery",
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.center,
+                  child: InkWell(
+                    /*
+
+                    onTap: () async {
+                      await availableCameras().then((value) => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => CameraPage(cameras: value))));
+                    },
+
+                    */
+                    child: Ink(
+                      width: width * 0.9,
+                      height: height * 0.18,
                       child: Material(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(15),
@@ -102,11 +172,15 @@ class _UpdateProfileImageScreenState extends State<UpdateProfileImageScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Image.asset("assets/images/FromGallery.png", width: 50, height: 50  ,),
+                              Image.asset(
+                                "assets/images/cameraLogo.png",
+                                width: 50,
+                                height: 50,
+                              ),
                               const Padding(
                                 padding: EdgeInsets.all(5),
                                 child: Text(
-                                  "From Gallery",
+                                  "Take Photo",
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
                               ),
@@ -117,41 +191,11 @@ class _UpdateProfileImageScreenState extends State<UpdateProfileImageScreen> {
                     ),
                   ),
                 ),
-                Align(
-                  alignment: Alignment.center,
-                  child: SizedBox(
-                    width: 325, // Set the desired width
-                    height: 129,
-                    child: Material(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(15),
-                      elevation: 5,
-                      shadowColor: const Color(0xFFFDF5ED),
-                      child: Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Image.asset("assets/images/cameraLogo.png", width: 50, height: 50  ,),
-                            const Padding(
-                              padding: EdgeInsets.all(5),
-                              child: Text(
-                                "Take Photo",
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
 
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: Container(
-                    margin: const EdgeInsets.only(top: 110),
+                    margin: const EdgeInsets.only(top: 100),
                     width: 157, // Set the desired width
                     height: 57, // Set the desired height
                     child: ElevatedButton(

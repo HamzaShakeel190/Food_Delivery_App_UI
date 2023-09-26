@@ -60,8 +60,8 @@ class OnBoardingScreen2 extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(bottom: 60, top: 42),
                     child: SizedBox(
-                      width: 157, // Set the desired width
-                      height: 57, // Set the desired height
+                      width: 170,
+                      height: 57,
                       child: ElevatedButton(
                         onPressed: () {
                           Navigator.pushNamed(context, LoginScreen.id);

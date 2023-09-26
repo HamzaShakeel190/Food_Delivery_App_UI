@@ -60,8 +60,8 @@ class OnBoardingScreen1 extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(bottom: 60, top: 42),
                     child: SizedBox(
-                      width: 157, // Set the desired width
-                      height: 57, // Set the desired height
+                      width: 170,
+                      height: 57,
                       child: ElevatedButton(
                         onPressed: () {
                           Navigator.pushNamed(context, OnBoardingScreen2.id);
@@ -70,8 +70,7 @@ class OnBoardingScreen1 extends StatelessWidget {
                           shape:
                           MaterialStateProperty.all<RoundedRectangleBorder>(
                             RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(
-                                  15), // Adjust the radius as needed
+                              borderRadius: BorderRadius.circular(15),
                             ),
                           ),
                         ),
