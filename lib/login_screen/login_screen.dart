@@ -220,7 +220,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       SizedBox(
-                        width: 170,
+                        width: 150,
                         height: 57,
                         child: ElevatedButton(
                           onPressed: () {
@@ -242,7 +242,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       SizedBox(
-                        width: 170,
+                        width: 150,
                         height: 57,
                         child: ElevatedButton(
                           onPressed: () {

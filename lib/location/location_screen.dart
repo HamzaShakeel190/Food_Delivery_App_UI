@@ -1,16 +1,24 @@
-import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'dart:io';
 
-import '../location/location_screen.dart';
+class LocationScreen extends StatefulWidget {
+  static const String id = "LocationScreen";
 
-class UploadedImagePreview extends StatelessWidget {
-  static const String id = "UploadedImagePreview";
+  const LocationScreen({
+    Key? key,
+  }) : super(key: key);
 
-  final XFile? imageFile;
+  @override
+  State<LocationScreen> createState() => _LocationScreenState();
+}
 
-  const UploadedImagePreview({Key? key, required this.imageFile})
-      : super(key: key);
+class _LocationScreenState extends State<LocationScreen> {
+  String? dropDownValue;
+  List<Map<String, dynamic>> countries = [
+    {"value": "usa", "name": "United States"},
+    {"value": "canada", "name": "Canada"},
+    {"value": "uk", "name": "United Kingdom"},
+    // Add more countries here...
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +30,7 @@ class UploadedImagePreview extends StatelessWidget {
             backgroundColor: const Color(0xff53E88B),
           ),
         ),
-        // colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xff2ecf80)),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xff2ecf80)),
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
@@ -40,7 +48,7 @@ class UploadedImagePreview extends StatelessWidget {
                     child: InkWell(
                       borderRadius: BorderRadius.circular(15),
                       onTap: () {
-                        Navigator.pop(context);
+                        // Navigator.pushNamed(context, routeName);
                       },
                       splashColor: const Color(0xE5D77B42),
                       child: Ink(
@@ -61,7 +69,7 @@ class UploadedImagePreview extends StatelessWidget {
                 const Padding(
                   padding: EdgeInsets.only(left: 20, bottom: 20, top: 0),
                   child: Text(
-                    "Upload Your Photo\nProfile",
+                    "Set Your Location",
                     style: TextStyle(
                       fontSize: 25,
                       fontWeight: FontWeight.bold,
@@ -77,52 +85,45 @@ class UploadedImagePreview extends StatelessWidget {
                     ),
                   ),
                 ),
-
-                // Display the selected image
-                Stack(
-                  children: [
-                    Center(
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 50, 0, 20),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
-                          child: Image.file(
-                            File(imageFile!.path),
-                            width: 240,
-                            height: 240,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
+                Container(
+                  width: double.infinity,
+                  margin: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.black26,
+                        spreadRadius: 0.1,
+                        blurRadius: 5,
                       ),
-                    ),
-                    Align(
-                      alignment: Alignment.topRight,
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 52, 60, 0),
-                        child: Container(
-                          margin: const EdgeInsets.all(3),
-                          width: 40,
-                          height: 40,
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.white38, // Set the background color here
-                          ),
-                          child: IconButton(
-                            onPressed: () {},
-                            icon: const Icon(
-                              Icons.close_rounded,
-                              size: 20,
-                              color: Colors.red,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
+                    ],
+                    borderRadius: BorderRadius.circular(15.0),
+                    color: Colors.white,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: DropdownButtonFormField<String>(
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          dropDownValue = newValue;
+                        });
+                      },
+                      value: dropDownValue,
+                      decoration: InputDecoration(
 
-                  ],
+                        border: InputBorder.none,
+                        contentPadding: EdgeInsets.zero,
+                        icon: const Icon(Icons.location_on),
+                        labelText: dropDownValue != null ? "Selected Location is:" : "Select a country",
+                      ),
+                      items: countries.map((country) {
+                        return DropdownMenuItem<String>(
+                          value: country["value"],
+                          child: Text(country["name"]),
+                        );
+                      }).toList(),
+                    ),
+                  ),
                 ),
-
-                // Next Button
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: Container(
@@ -131,12 +132,12 @@ class UploadedImagePreview extends StatelessWidget {
                     height: 57, // Set the desired height
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.pushNamed(
-                            context, LocationScreen.id);
+                        // Navigator.pushNamed(
+                        //     context, UpdateProfileImageScreen.id);
                       },
                       style: ButtonStyle(
                         shape:
-                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                        MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(
                                 15), // Adjust the radius as needed

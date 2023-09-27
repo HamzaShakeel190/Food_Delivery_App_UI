@@ -3,6 +3,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class CameraPage extends StatefulWidget {
+
+  static const String id = "CameraPage";
+
   final CameraDescription camera;
   final Function(XFile) onPictureTaken; // Add the callback function
 
