@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../home/home_screen.dart';
+
 class LocationScreen extends StatefulWidget {
   static const String id = "LocationScreen";
 
@@ -14,6 +16,7 @@ class LocationScreen extends StatefulWidget {
 class _LocationScreenState extends State<LocationScreen> {
   String? dropDownValue;
   List<Map<String, dynamic>> countries = [
+    // {"value": "null", "name": "No Country"},
     {"value": "usa", "name": "United States"},
     {"value": "canada", "name": "Canada"},
     {"value": "uk", "name": "United Kingdom"},
@@ -132,8 +135,8 @@ class _LocationScreenState extends State<LocationScreen> {
                     height: 57, // Set the desired height
                     child: ElevatedButton(
                       onPressed: () {
-                        // Navigator.pushNamed(
-                        //     context, UpdateProfileImageScreen.id);
+                        Navigator.pushNamed(
+                            context, HomeScreen.id);
                       },
                       style: ButtonStyle(
                         shape:
