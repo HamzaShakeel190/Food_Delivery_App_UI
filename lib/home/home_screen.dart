@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'navigationbar_home.dart';
+
 class HomeScreen extends StatefulWidget {
   static const String id = "HomeScreen";
 
@@ -15,6 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         navigationBarTheme: NavigationBarThemeData(
           backgroundColor: Colors.white,
@@ -71,11 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
         body: <Widget>[
-          Container(
-            color: Colors.white,
-            alignment: Alignment.center,
-            child: const Text('Page 1'),
-          ),
+          const NavigationBarHome(),
           Container(
             color: Colors.white,
             alignment: Alignment.center,
@@ -89,7 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Container(
             color: Colors.white,
             alignment: Alignment.center,
-            child: const Text('Page 4'),
+            child: const Text('Page 4',),
           ),
         ][currentPageIndex],
       ),

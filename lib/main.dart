@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:free_food_delivery_app/payment_screen/payment_screen.dart';
-import 'package:free_food_delivery_app/profile_screens/camera_screen.dart';
 import 'package:free_food_delivery_app/profile_screens/update_profile_screen.dart';
-import 'package:free_food_delivery_app/profile_screens/upload_preview.dart';
 import 'package:free_food_delivery_app/signup_screen/signup_process_screen.dart';
 import 'package:free_food_delivery_app/signup_screen/signup_screen.dart';
 import 'home/home_screen.dart';
@@ -10,6 +8,7 @@ import 'location/location_screen.dart';
 import 'login_screen/login_screen.dart';
 import 'on_boarding_screen1.dart';
 import 'on_boarding_screen2.dart';
+
 
 void main() {
   runApp(const Home());
@@ -39,6 +38,7 @@ class Home extends StatelessWidget {
         UpdateProfileImageScreen.id: (context) => const UpdateProfileImageScreen(),
         LocationScreen.id: (context) => const LocationScreen(),
         HomeScreen.id: (context) => const HomeScreen(),
+        // Home.id: (context) => const Home(),
       },
     );
   }
