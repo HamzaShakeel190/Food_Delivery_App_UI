@@ -15,6 +15,7 @@ class CustomRestaurantDisplayContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.symmetric(vertical: 10),
       width: 150,
       height: 175,
       decoration: BoxDecoration(
