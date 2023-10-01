@@ -6,7 +6,6 @@ class HomeScreen extends StatefulWidget {
   static const String id = "HomeScreen";
 
   const HomeScreen({super.key});
-
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }

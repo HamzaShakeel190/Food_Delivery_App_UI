@@ -227,8 +227,7 @@ class _UpdateProfileImageScreenState extends State<UpdateProfileImageScreen> {
                   height: 57, // Set the desired height
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(
-                          context, UpdateProfileImageScreen.id);
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=> const UploadedImagePreview(imageFile: null,),),);
                     },
                     style: ButtonStyle(
                       shape:

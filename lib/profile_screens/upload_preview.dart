@@ -84,15 +84,49 @@ class UploadedImagePreview extends StatelessWidget {
                     Center(
                       child: Padding(
                         padding: const EdgeInsets.fromLTRB(0, 50, 0, 20),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
-                          child: Image.file(
-                            File(imageFile!.path),
-                            width: 240,
-                            height: 240,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
+                        child: imageFile != null
+                            ? ClipRRect(
+                                borderRadius: BorderRadius.circular(20),
+                                child: Image.file(
+                                  File(imageFile!.path),
+                                  width: 240,
+                                  height: 240,
+                                  fit: BoxFit.cover,
+                                ),
+                              )
+                            : Container(
+                                width: 240,
+                                height: 240,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: Colors.white,
+                                    boxShadow: const [
+                                      BoxShadow(
+                                        blurRadius: 5,
+                                        spreadRadius: 0.1,
+                                      ),
+                                    ]),
+                                child: const Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      Icons.account_circle,
+                                      size: 120,
+                                      color: Colors.black,
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.all(10),
+                                      child: Text(
+                                        "Your Avatar",
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 20,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
                       ),
                     ),
                     Align(
@@ -105,7 +139,8 @@ class UploadedImagePreview extends StatelessWidget {
                           height: 40,
                           decoration: const BoxDecoration(
                             shape: BoxShape.circle,
-                            color: Colors.white38, // Set the background color here
+                            color:
+                                Colors.white38, // Set the background color here
                           ),
                           child: IconButton(
                             onPressed: () {},
@@ -118,7 +153,6 @@ class UploadedImagePreview extends StatelessWidget {
                         ),
                       ),
                     ),
-
                   ],
                 ),
 
@@ -131,8 +165,7 @@ class UploadedImagePreview extends StatelessWidget {
                     height: 57, // Set the desired height
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.pushNamed(
-                            context, LocationScreen.id);
+                        Navigator.pushNamed(context, LocationScreen.id);
                       },
                       style: ButtonStyle(
                         shape:

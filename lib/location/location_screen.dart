@@ -51,7 +51,7 @@ class _LocationScreenState extends State<LocationScreen> {
                     child: InkWell(
                       borderRadius: BorderRadius.circular(15),
                       onTap: () {
-                        // Navigator.pushNamed(context, routeName);
+                        Navigator.pop(context);
                       },
                       splashColor: const Color(0xE5D77B42),
                       child: Ink(
@@ -106,24 +106,31 @@ class _LocationScreenState extends State<LocationScreen> {
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: DropdownButtonFormField<String>(
                       onChanged: (String? newValue) {
-                        setState(() {
-                          dropDownValue = newValue;
-                        });
+                        setState(
+                          () {
+                            dropDownValue = newValue;
+                          },
+                        );
                       },
                       value: dropDownValue,
                       decoration: InputDecoration(
-
                         border: InputBorder.none,
                         contentPadding: EdgeInsets.zero,
                         icon: const Icon(Icons.location_on),
-                        labelText: dropDownValue != null ? "Selected Location is:" : "Select a country",
+                        labelText: dropDownValue != null
+                            ? "Selected Location is:"
+                            : "Select a country",
                       ),
-                      items: countries.map((country) {
-                        return DropdownMenuItem<String>(
-                          value: country["value"],
-                          child: Text(country["name"]),
-                        );
-                      }).toList(),
+                      items: countries.map(
+                        (country) {
+                          return DropdownMenuItem<String>(
+                            value: country["value"],
+                            child: Text(
+                              country["name"],
+                            ),
+                          );
+                        },
+                      ).toList(),
                     ),
                   ),
                 ),
@@ -135,12 +142,11 @@ class _LocationScreenState extends State<LocationScreen> {
                     height: 57, // Set the desired height
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.pushNamed(
-                            context, HomeScreen.id);
+                        Navigator.pushNamed(context, HomeScreen.id);
                       },
                       style: ButtonStyle(
                         shape:
-                        MaterialStateProperty.all<RoundedRectangleBorder>(
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(
                                 15), // Adjust the radius as needed
