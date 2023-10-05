@@ -146,7 +146,8 @@ class _NavigationBarHomeState extends State<NavigationBarHome> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     const Padding(
-                                      padding: EdgeInsets.only(top: 20, bottom: 10),
+                                      padding:
+                                          EdgeInsets.only(top: 20, bottom: 10),
                                       child: Text(
                                         softWrap: true,
                                         "Special Deal For\nOctober",
@@ -162,9 +163,10 @@ class _NavigationBarHomeState extends State<NavigationBarHome> {
                                       style: ElevatedButton.styleFrom(
                                         backgroundColor: Colors.white,
                                         animationDuration:
-                                        const Duration(milliseconds: 200),
+                                            const Duration(milliseconds: 200),
                                         shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(10),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
                                         ),
                                       ),
                                       child: const Text(
@@ -179,7 +181,6 @@ class _NavigationBarHomeState extends State<NavigationBarHome> {
                               ),
                             ],
                           ),
-
                         ],
                       ),
                     ),
@@ -196,8 +197,14 @@ class _NavigationBarHomeState extends State<NavigationBarHome> {
                           ),
                         ),
                         TextButton(
-                          onPressed: (){
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=> AllRestaurantsScreen()));
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const AllRestaurantsScreen(),
+                              ),
+                            );
                           },
                           style: TextButton.styleFrom(
                             minimumSize: const Size(20, 5),
@@ -219,9 +226,10 @@ class _NavigationBarHomeState extends State<NavigationBarHome> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           CustomRestaurantDisplayContainer(
-                              imgAddress: "assets/images/Resturant_Vegas_Image.png",
-                              txt: "Vegan Resto",
-                              time: 12,
+                            imgAddress:
+                                "assets/images/Resturant_Vegas_Image.png",
+                            txt: "Vegan Resto",
+                            time: 12,
                           ),
                           CustomRestaurantDisplayContainer(
                             imgAddress:

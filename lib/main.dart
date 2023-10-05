@@ -1,20 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:free_food_delivery_app/payment_screen/payment_screen.dart';
 import 'package:free_food_delivery_app/profile_screens/update_profile_screen.dart';
+import 'package:free_food_delivery_app/provider/chat_provider.dart';
 import 'package:free_food_delivery_app/restaurants/all_%20restaurants.dart';
 import 'package:free_food_delivery_app/signup_screen/signup_process_screen.dart';
 import 'package:free_food_delivery_app/signup_screen/signup_screen.dart';
+import 'package:provider/provider.dart';
 import 'home/home_screen.dart';
 import 'location/location_screen.dart';
 import 'login_screen/login_screen.dart';
 import 'on_boarding_screen1.dart';
 import 'on_boarding_screen2.dart';
 
-
 void main() {
-  runApp(const Home());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => ChatProvider(), // Provide an instance of ChatProvider
+      child: const Home(),
+    ),
+  );
 }
-
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);

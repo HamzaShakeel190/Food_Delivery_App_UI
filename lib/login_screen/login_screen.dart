@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../home/home_screen.dart';
+import '../home/navigationbar_home.dart';
 import '../signup_screen/signup_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -67,11 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
-                        left: 25,
-                        right: 25,
-                        bottom: 15,
-                        top: 40
-                    ),
+                        left: 25, right: 25, bottom: 15, top: 40),
                     child: Material(
                       borderRadius: BorderRadius.circular(15),
                       elevation: 10,
@@ -141,7 +139,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                   ),
-
                   const Padding(
                     padding: EdgeInsets.all(10),
                     child: Text(
@@ -224,7 +221,12 @@ class _LoginScreenState extends State<LoginScreen> {
                         height: 57,
                         child: ElevatedButton(
                           onPressed: () {
-                            // Navigator.pushNamed(context, SignUpScreen.id);
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const HomeScreen(),
+                              ),
+                            );
                           },
                           style: ButtonStyle(
                             shape: MaterialStateProperty.all<

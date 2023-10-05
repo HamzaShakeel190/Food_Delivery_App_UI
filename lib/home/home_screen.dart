@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'chats_screen.dart';
 import 'navigationbar_home.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -43,9 +44,11 @@ class _HomeScreenState extends State<HomeScreen> {
         bottomNavigationBar: NavigationBar(
           // backgroundColor: Colors.white,
           onDestinationSelected: (int index) {
-            setState(() {
-              currentPageIndex = index;
-            });
+            setState(
+              () {
+                currentPageIndex = index;
+              },
+            );
           },
           selectedIndex: currentPageIndex,
           destinations: const <Widget>[
@@ -69,7 +72,6 @@ class _HomeScreenState extends State<HomeScreen> {
               icon: Icon(Icons.message_outlined),
               label: 'Chat',
             ),
-
           ],
         ),
         body: <Widget>[
@@ -84,11 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
             alignment: Alignment.center,
             child: const Text('Page 3'),
           ),
-          Container(
-            color: Colors.white,
-            alignment: Alignment.center,
-            child: const Text('Page 4',),
-          ),
+          ChatsScreen(),
         ][currentPageIndex],
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../home/home_screen.dart';
+import '../login_screen/login_screen.dart';
 
 class LocationScreen extends StatefulWidget {
   static const String id = "LocationScreen";
@@ -142,7 +143,7 @@ class _LocationScreenState extends State<LocationScreen> {
                     height: 57, // Set the desired height
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, HomeScreen.id);
+                        Navigator.pushNamed(context, LoginScreen.id);
                       },
                       style: ButtonStyle(
                         shape:
@@ -154,7 +155,7 @@ class _LocationScreenState extends State<LocationScreen> {
                         ),
                       ),
                       child: const Text(
-                        "Next",
+                        "Login",
                         style: TextStyle(fontSize: 16, color: Colors.white),
                       ),
                     ),
